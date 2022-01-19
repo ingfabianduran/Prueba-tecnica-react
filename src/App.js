@@ -30,7 +30,7 @@ function App() {
       setProductos(res.productos);
       setProductosBySelect(mapProductosBySelect);
     }).catch(err => {
-
+      toast.error('Algo extraño ocurrio aquí');
     });
   };
 
@@ -54,7 +54,7 @@ function App() {
         }
       }, 2000);
     }).catch(err => {
-
+      toast.error('Algo extraño ocurrio aquí');
     });
   };
 
@@ -70,7 +70,7 @@ function App() {
           getProductos();
         }, 2000);
       }).catch(err => {
-
+        toast.error('Algo extraño ocurrio aquí');
       });
     } else if (typeSubmit === 'PUT') {
       apiPut(`http://127.0.0.1:8000/api/productos/${producto.id}`, values).then(res => {
@@ -82,7 +82,7 @@ function App() {
           getProductos();
         }, 2000);
       }).catch(err => {
-
+        toast.error('Algo extraño ocurrio aquí');
       });
     }
   };
@@ -96,7 +96,7 @@ function App() {
       }, 2000);
         getProductos();
     }).catch(err => {
-
+      toast.error('Algo extraño ocurrio aquí');
     });
   };
 
@@ -112,7 +112,7 @@ function App() {
       }, 2000);
       getProductos();
     }).catch(err => {
-
+      toast.error('Algo extraño ocurrio aquí');
     });
   };
 
