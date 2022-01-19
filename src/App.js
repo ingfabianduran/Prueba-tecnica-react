@@ -54,6 +54,7 @@ function App() {
         }
       }, 2000);
     }).catch(err => {
+      setLoadingTable(false);
       toast.error('Algo extraño ocurrio aquí');
     });
   };
@@ -70,6 +71,7 @@ function App() {
           getProductos();
         }, 2000);
       }).catch(err => {
+        setLoadingProducto(false);
         toast.error('Algo extraño ocurrio aquí');
       });
     } else if (typeSubmit === 'PUT') {
@@ -82,6 +84,7 @@ function App() {
           getProductos();
         }, 2000);
       }).catch(err => {
+        setLoadingProducto(false);
         toast.error('Algo extraño ocurrio aquí');
       });
     }
@@ -96,6 +99,7 @@ function App() {
       }, 2000);
         getProductos();
     }).catch(err => {
+      setLoadingTable(false);
       toast.error('Algo extraño ocurrio aquí');
     });
   };
@@ -112,6 +116,7 @@ function App() {
       }, 2000);
       getProductos();
     }).catch(err => {
+      setLoadingVenta(false);
       toast.error('Algo extraño ocurrio aquí');
     });
   };
