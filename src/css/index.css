@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:wght@300&display=swap');
+:root {
+    --my-font: 'Ubuntu';
+    --my-font: 'Exo';
+    --my-color-background: #F2F2F2;
+}
+#root {
+    background-color: var(--my-color-background);
+    font-family: var(--my-font), sans-serif !important;
+}
+input {
+    font-family: var(--my-font), sans-serif !important;
+}
+.ui {
+    font-family: var(--my-font), sans-serif !important;
+}
+.header  {
+    font-family: var(--my-font), sans-serif !important;
+}
+.row-main {
+    height: 100vh;
+}
+.margin-container {
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.font-main {
+    font-family: var(--my-font), sans-serif !important;
+}
