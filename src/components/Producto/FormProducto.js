@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Form, Button, Card } from 'semantic-ui-react';
 import { Select } from 'formik-semantic-ui-react';
 import { Formik } from 'formik';
+import { validateProducto } from '../../validators/validators';
 
-function FormProducto() {
+function FormProducto({ producto, submitProducto, loading }) {
   const [categorias, setCategorias] = useState([
     { key: 'Frutas', text: 'Frutas', value: 'Frutas' },
     { key: 'Verduras', text: 'Verduras', value: 'Verduras' },
@@ -14,18 +15,22 @@ function FormProducto() {
     { key: 'Lacteos', text: 'Lacteos', value: 'Lacteos' }]);
   return (
     <Formik
-      enableReinitialize>
+      enableReinitialize
+      initialValues={producto}
+      validationSchema={validateProducto}
+      onSubmit={values => submitProducto(values)}>
       {({ values, handleSubmit, handleChange, errors, touched }) => {
         return (
           <Card 
             fluid>
             <Card.Content>
-              <Card.Header>Nuevo Producto</Card.Header>
+              <Card.Header>Producto</Card.Header>
             </Card.Content>
             <Card.Content>
               <Form 
                 onSubmit={handleSubmit}
-                autoComplete='off'>
+                autoComplete='off'
+                loading={loading}>
                   <Form.Group>
                     <Form.Input
                       fluid
@@ -33,33 +38,44 @@ function FormProducto() {
                       label='Nombre'
                       placeholder='Nombre del producto' 
                       name='nombre'
-                      onChange={handleChange}>
+                      onChange={handleChange}
+                      value={values.nombre}
+                      error={touched.nombre && errors.nombre ? errors.nombre : null}>
                     </Form.Input>
                     <Form.Input
+                      type='number'
                       fluid
                       width={8}
                       label='Referencia'
                       placeholder='Referencia del producto' 
                       name='referencia'
-                      onChange={handleChange}>
+                      onChange={handleChange}
+                      value={values.referencia}
+                      error={touched.referencia && errors.referencia ? errors.referencia : null}>
                     </Form.Input>
                   </Form.Group>
                   <Form.Group>
                     <Form.Input
+                      type='number'
                       fluid
                       width={8}
                       label='Precio'
                       placeholder='Precio del producto' 
                       name='precio'
-                      onChange={handleChange}>
+                      onChange={handleChange}
+                      value={values.precio}
+                      error={touched.precio && errors.precio ? errors.precio : null}>
                     </Form.Input>
                     <Form.Input
+                      type='number'
                       fluid
                       width={8}
                       label='Peso'
                       placeholder='Peso del producto' 
                       name='peso'
-                      onChange={handleChange}>
+                      onChange={handleChange}
+                      value={values.peso}
+                      error={touched.peso && errors.peso ? errors.peso : null}>
                     </Form.Input>
                   </Form.Group>
                   <Form.Group>
@@ -69,15 +85,19 @@ function FormProducto() {
                       label='Categoria'
                       placeholder='Categoria del producto'
                       name='categoria'
-                      options={categorias}>
+                      options={categorias}
+                      error={touched.categoria && errors.categoria ? errors.categoria : null}>
                     </Select>
                     <Form.Input
+                      type='number'
                       fluid
                       width={8}
                       label='Stock'
                       placeholder='Stock del producto' 
                       name='stock'
-                      onChange={handleChange}>
+                      onChange={handleChange}
+                      value={values.stock}
+                      error={touched.stock && errors.stock ? errors.stock : null}>
                     </Form.Input>
                   </Form.Group>
                   <Button primary type='submit'>Registrar</Button>
